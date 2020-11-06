@@ -129,7 +129,7 @@ read -s -p "===> hit enter when ready to install crontab..."
 echo "installing @reboot to crontab..."
 cat > /tmp/bootstrap-crontab <<EOF
 # This is for installing proper picam-videoparking crontab after reboot
-@reboot  crontab $HOME/picam-videoparking/crontab.txt
+@reboot  /usr/bin/crontab $HOME/picam-videoparking/crontab.txt
 EOF
 crontab /tmp/bootstrap-crontab
 
