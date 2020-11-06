@@ -131,6 +131,7 @@ cat > /tmp/bootstrap-crontab <<EOF
 # This is for installing proper picam-videoparking crontab after reboot
 @reboot  crontab $HOME/picam-videoparking/crontab.txt
 EOF
+crontab /tmp/bootstrap-crontab
 
 echo "setting swap file size..."
 sudo sh -c  'printf "\nCONF_SWAPSIZE=512\n" >> /etc/dphys-swapfile'
