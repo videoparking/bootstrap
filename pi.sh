@@ -17,8 +17,8 @@ done
 read -s -p "===> now will install packages, hit enter to continue "
 
 echo "installing packages..."
-echo sudo apt-get update -y
-echo sudo apt install -y git python3-pip libatlas-base-dev libtiff5-dev libopenjp2-7-dev
+sudo apt-get update -y
+sudo apt install -y git python3-pip libatlas-base-dev libtiff5-dev libopenjp2-7-dev
 
 cat <<EOF
 
@@ -106,9 +106,13 @@ cat <<EOF
 =======================================================
 Add new deployment key at: https://github.com/videoparking/picam-videoparking/settings/keys/new
 
-And copy this key there:
+Name it $location_tag/$location_camera_id
+
+Copy this key there:
 
 $ssh_key
+
+AND DO NOT PROVIDE WRITE ACCESS!!!
 
 =======================================================
 EOF
@@ -153,8 +157,8 @@ Now raspi-config will be run, you'll need to:
 EOF
 read -s -p "===> hit enter "
 
-echo sudo raspi-config
+sudo raspi-config
 
 # In case user forgot
 read -s -p "hit enter to reboot "
-echo sudo reboot
+sudo reboot
