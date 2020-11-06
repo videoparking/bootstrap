@@ -4,12 +4,13 @@
 set -u
 set -e
 
-echo "checking machine model..."
+echo -n "checking machine model... "
 dmesg | grep -i 'Machine model' | grep -o 'Raspberry Pi' || (echo 'machine model is not supported' ; exit 1)
 
 for user in aleksandr-vin jsvapiav
 do
     echo "authorizing $user key for ssh access..."
+    chmod u+w ~/.ssh/authorized_keys
     curl https://github.com/$user.keys | tee -a ~/.ssh/authorized_keys
 done
 
