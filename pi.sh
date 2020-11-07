@@ -18,7 +18,7 @@ read -s -p "===> now will install packages, hit enter to continue "
 
 echo "installing packages..."
 sudo apt-get update -y
-sudo apt install -y git python3-pip libatlas-base-dev libtiff5-dev libopenjp2-7-dev virtualenv ttf-dejavu
+sudo apt install -y git python3-pip libatlas-base-dev libtiff5-dev libopenjp2-7-dev virtualenv
 
 echo "installing python virtual environment..."
 virtualenv -p python3 ~/venv
@@ -99,8 +99,7 @@ export S3_CAM_TAG=$location_tag
 export S3_CAM_ID=$location_camera_id
 export AWS_PROFILE=$aws_profile
 export CAM_ROTATION=$camera_rotation_deg
-export CAM_ZONES_PREVIEW_FONT=DejaVuSansMono
-source $HOME/venv/bin/activate
+. $HOME/venv/bin/activate
 EOF
 
 ssh_key=$(< ~/.ssh/picam_videoparking_deloyment_rsa.pub)
@@ -135,7 +134,7 @@ cat > $HOME/.picam-videoparking-crontab.txt <<EOF
 * * * * * /bin/sh -c '. $HOME/.profile && $HOME/venv/bin/picam-videoparking'
 
 # Updating tooling every 30th minute of the hour
-30 * * * * /bin/sh -c '. $HOME/.profile && cd ~/picam-videoparking && git pull && pip3 install -e .
+30 * * * * /bin/sh -c '. $HOME/.profile && cd $HOME/picam-videoparking && git pull && pip3 install -e .
 EOF
 
 cat > /tmp/bootstrap-crontab <<EOF
