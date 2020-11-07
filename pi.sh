@@ -18,7 +18,7 @@ read -s -p "===> now will install packages, hit enter to continue "
 
 echo "installing packages..."
 sudo apt-get update -y
-sudo apt install -y git python3-pip libatlas-base-dev libtiff5-dev libopenjp2-7-dev virtualenv
+sudo apt install -y git python3-pip libatlas-base-dev libtiff5-dev libopenjp2-7-dev virtualenv ttf-dejavu
 
 echo "installing python virtual environment..."
 virtualenv -p python3 ~/venv
